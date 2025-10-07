@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>RapidIdentity – URL Preview</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    input, button { padding: 0.5rem; font-size: 1rem; }
+    iframe { width: 100%; height: 80vh; border: 1px solid #ccc; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>RapidIdentity URL Viewer</h1>
+  <p>Enter a full URL (including https://):</p>
+  <input type="text" id="url-input" placeholder="https://example.com" size="50"/>
+  <button id="go">Go</button>
+
+  <iframe id="viewer" src=""></iframe>
+
+  <script>
+    document.getElementById('go').onclick = function() {
+      const url = document.getElementById('url-input').value;
+      // naive check
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        alert('Enter full URL with http(s)');
+        return;
+      }
+      document.getElementById('viewer').src = url;
+    };
+  </script>
+</body>
+</html>
